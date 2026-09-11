@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---------------- Colour ---------------- */
+  --color-cream: #f5f1ea; /* page background, warm cream */
+  --color-ink: #1a1a1a; /* primary text, near-black */
+  --color-muted: #6b6560; /* secondary text, warm grey */
+  --color-line: #e0d9ce; /* card and section borders */
+  --color-rust: #c1502e; /* accent — now also used as large fill */
+
+  /* ---------------- Type ---------------- */
+  --font-poster: var(--font-anton), "Arial Narrow", sans-serif;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-signature), "Brush Script MT", cursive;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-rust);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-rust);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Small letterspaced caps label — used for eyebrows and rail labels. */
+@utility label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
